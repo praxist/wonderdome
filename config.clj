@@ -50,6 +50,12 @@
       (handler/control-code :strobe-shortcut
         :code [:X :X :X :X :X :Y :start]
         :mode :strobe)
+      (handler/control-code :nightsky-shortcut
+        :code [:X :Y :X :Y :X :Y :start]
+        :mode :nightsky)
+      (handler/control-code :stripeq-shortcut
+        :code [:X :Y :B :A :X :Y :B :A :start]
+        :mode :strip-eq)
       (handler/control-code :lantern
         :code [:L :R :L :R :X :Y :start]
         :mode :lantern)
@@ -84,7 +90,7 @@
 
 
 (definput :gamepad
-  gamepad/snes
+  gamepad/og-snes
   (async/chan (async/dropping-buffer 10)))
 
 
@@ -131,6 +137,8 @@
 
 (register-mode :blue
   (playasophy.wonderdome.mode.BlueMode.))
+(register-mode :nightsky
+  (playasophy.wonderdome.mode.NightSkyMode.))
 
 
 
@@ -140,5 +148,4 @@
    :tunes
    :flicker
    :rainbow
-   :strip-eq
    :ant])
